@@ -5,31 +5,47 @@ const port = 3000;
 app.listen(port, () => {
   console.log("Server Started");
 });
-// default route as home page ( / ) OR localhost:3000
+// Response Methods
 
-// Single Route
 app.get("/", (req, res) => {
-  res.send("<h1>Home Page</h1>");
+  res.send("Hello World");
+});
+
+app.get("/expressapi", (req, res) => {
+  res.json({
+    users: [
+      {
+        id: 1,
+        name: "Alice Johnson",
+        email: "alice@example.com",
+        role: "admin",
+      },
+      {
+        id: 2,
+        name: "Bob Smith",
+        email: "bob@example.com",
+        role: "editor",
+      },
+      {
+        id: 3,
+        name: "Charlie Davis",
+        email: "charlie@example.com",
+        role: "viewer",
+      },
+    ],
+  });
 });
 
 app.get("/about", (req, res) => {
-  res.send("<h1>About Page</h1>");
+  res.redirect("https://www.google.com");
 });
 
-// Double/nested Route
-
-app.get("/about/profile", (req, res) => {
-  res.send("<h1>Profile Page</h1>");
+app.get("/users", (req, res) => {
+  res.sendStatus(404);
 });
 
-// Parameter Route like calling a digit
-app.get("/about/profile/:bookno", (req, res) => {
-  res.send(req.params);
-});
+app.get("/files", (req, res) => {
+  // res.sendFile(__dirname + "/files/randomText.pdf");
 
-// Query Route like ?name=ali
-app.get("/search", (req, res) => {
-  const name = req.query.name;
-  const age = req.query.age;
-  res.send("You Search For: " + name + " & Your Age is: " + age);
+  res.download(__dirname + "/files/randomText.pdf");
 });
