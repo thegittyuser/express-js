@@ -1,0 +1,79 @@
+request methods properties in express js
+
+In Express.js, the request object (req) provides a lot of useful properties that can help you work with incoming HTTP requests. When a client sends a request to your Express server, the request object contains information about that request, such as headers, query parameters, body data, and more.
+
+Here are some of the key request methods and properties in Express.js:
+
+1. Request Methods
+
+These are the HTTP methods that Express supports, allowing you to handle different types of requests:
+
+req.method: The HTTP method used for the request (GET, POST, PUT, DELETE, etc.). This is useful for checking the type of request in a route handler.
+
+app.get('/', (req, res) => {
+  console.log(req.method);  // 'GET'
+  res.send('Hello World');
+});
+
+
+app.get(), app.post(), app.put(), app.delete(): These are Express methods for handling different HTTP methods for routes.
+
+2. Request Properties
+
+Here are some of the key properties of the req (request) object in Express:
+
+Basic Information
+
+req.url: The full URL of the request, including the path and query string.
+
+app.get('/hello', (req, res) => {
+  console.log(req.url);  // '/hello'
+  res.send('Hello World');
+});
+
+
+req.method: The HTTP method used (GET, POST, etc.).
+
+req.originalUrl: The original request URL, including the query string (useful for middleware).
+
+req.path: The path part of the URL, excluding the domain and query string.
+
+Headers
+
+req.headers: An object containing the request headers sent by the client.
+
+app.get('/headers', (req, res) => {
+  console.log(req.headers);  // { 'user-agent': 'Mozilla/5.0', ... }
+  res.send('Check the console');
+});
+
+
+req.get(field): A method to get a specific header field (case-insensitive).
+
+app.get('/get-header', (req, res) => {
+  console.log(req.get('User-Agent'));  // Returns user-agent header value
+  res.send('Check the console');
+});
+
+Query Parameters
+
+req.query: An object containing the query parameters from the URL (e.g., /search?q=node would have req.query.q equal to node).
+
+app.get('/search', (req, res) => {
+  console.log(req.query.q);  // 'node'
+  res.send('Search query: ' + req.query.q);
+});
+
+Route Parameters
+
+req.params: An object containing route parameters (like URL placeholders). For example, in the route '/user/:id', the value of :id would be available in req.params.id.
+
+app.get('/user/:id', (req, res) => {
+  console.log(req.params.id);  // The 'id' from the URL, e.g., '123'
+  res.send('User ID: ' + req.params.id);
+});
+
+Request Body (for POST/PUT requests)
+
+req.body: This is used for accessing data sent in the body of a POST or PUT request. You need to use middleware like express.json() or express.urlencoded() to parse the body data before accessing it.
+
