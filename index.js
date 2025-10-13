@@ -5,47 +5,26 @@ const port = 3000;
 app.listen(port, () => {
   console.log("Server Started");
 });
-// Response Methods
+
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Request Methods
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
-app.get("/expressapi", (req, res) => {
-  res.json({
-    users: [
-      {
-        id: 1,
-        name: "Alice Johnson",
-        email: "alice@example.com",
-        role: "admin",
-      },
-      {
-        id: 2,
-        name: "Bob Smith",
-        email: "bob@example.com",
-        role: "editor",
-      },
-      {
-        id: 3,
-        name: "Charlie Davis",
-        email: "charlie@example.com",
-        role: "viewer",
-      },
-    ],
-  });
+  res.send("<h1>Home</h1>");
 });
 
 app.get("/about", (req, res) => {
-  res.redirect("https://www.google.com");
+  // res.send(req.ip);
+  // res.send(req.ips);
+  // res.send(req.url);
+  // res.send(req.originalUrl);
+  // res.send(req.path);
+  res.send(req.path);
 });
 
-app.get("/users", (req, res) => {
-  res.sendStatus(404);
-});
-
-app.get("/files", (req, res) => {
-  // res.sendFile(__dirname + "/files/randomText.pdf");
-
-  res.download(__dirname + "/files/randomText.pdf");
+app.post("/users", (req, res) => {
+  res.send(req.body);
 });
