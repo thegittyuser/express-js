@@ -22,7 +22,11 @@ app.get("/about", (req, res) => {
   // res.send(req.url);
   // res.send(req.originalUrl);
   // res.send(req.path);
-  res.send(req.path);
+  // res.send(req.method);
+  // res.send(req.hostname);
+  // res.send(req.method);
+  // res.send(req.protocol);
+  res.send(req.secure);
 });
 
 app.post("/users", (req, res) => {
