@@ -1,0 +1,16 @@
+what is EJS?
+EJS stands for 'Embedded JavaScript' Templates. It's a simple templating language that lets you generate HTML markup with plain JavaScript.
+
+Key Features of EJS:
+
+Embed JavaScript in HTML — You can use plain JS logic inside your HTML files.
+
+Fast & Lightweight — It doesn’t require a complex setup and is quick to run.
+
+Supports includes and partials — Great for breaking HTML into reusable components.
+
+Works well with Node.js — Often used with Express.js to render server-side views.
+
+
+Istallation Command:
+npm install ejs
