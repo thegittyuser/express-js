@@ -1,0 +1,7 @@
+EJS Tags:
+
+<% code here %> :-> Control Flow
+<%= code here %> :-> shows output
+<%# comment lines here %> :-> write comments
+<%_ code here %> :-> remove blank lines(space) before tag
+<% code here _%> :-> remove blank lines(space) after tag

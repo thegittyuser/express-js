@@ -9,5 +9,8 @@ app.listen(port, () => {
 app.set("view engine", "ejs");
 
 app.get("/views", (req, res) => {
-  res.render("users");
+  res.render("users", {
+    title: "Home",
+    description: "This is my home page",
+  });
 });
